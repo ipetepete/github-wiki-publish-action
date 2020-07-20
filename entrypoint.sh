@@ -58,8 +58,6 @@ for file in $(find $1 -maxdepth 1 -type f \( -name '*.md' -o -name '*.org' \) -e
 done
 
 debug "Committing and pushing changes"
-echo "Committing files from $tmp_dir"
-echo "$(ls $tmp_dir)"
 (
     cd "$tmp_dir" || exit 1
     git add .
