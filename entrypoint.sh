@@ -55,7 +55,7 @@ debug "Enumerating contents of $1"
 echo "Looking for $1 in $(pwd)"
 echo "$(ls .)"
 echo "$(ls $1)"
-for file in $(find $1 -maxdepth 1 -type f -name '*{.md,.org}' -execdir basename '{}' ';'); do
+for file in $(find $1 -maxdepth 1 -type f \( -name '*.md' -o -name '*.org}' \) -execdir basename '{}' ';'); do
     debug "Copying $file"
     echo "Copying $file"
     cp "$1/$file" "$tmp_dir"
