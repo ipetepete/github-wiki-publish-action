@@ -51,6 +51,8 @@ tmp_dir=$(mktemp -d -t ci-XXXXXXXXXX)
 )
 
 debug "Enumerating contents of $1"
+
+echo "Looking for $1 in $(pwd)"
 for file in $(find $1 -maxdepth 1 -type f -name '*{.md,.org}' -execdir basename '{}' ';'); do
     debug "Copying $file"
     cp "$1/$file" "$tmp_dir"
