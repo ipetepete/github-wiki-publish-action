@@ -53,7 +53,8 @@ tmp_dir=$(mktemp -d -t ci-XXXXXXXXXX)
 debug "Enumerating contents of $1"
 
 echo "Looking for $1 in $(pwd)"
-echo "ls $1"
+echo "$(ls .)"
+echo "$(ls $1)"
 for file in $(find $1 -maxdepth 1 -type f -name '*{.md,.org}' -execdir basename '{}' ';'); do
     debug "Copying $file"
     echo "Copying $file"
@@ -62,6 +63,7 @@ done
 
 debug "Committing and pushing changes"
 echo "Committing files from $tmp_dir"
+echo "$(ls $tmp_dir)"
 (
     cd "$tmp_dir" || exit 1
     git add .
